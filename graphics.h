@@ -1,3 +1,38 @@
+#include <graphics.h>
+#include <conio.h>
+
+void drawBMWLogo(int x, int y, int radius) {
+    setcolor(WHITE);
+    circle(x, y, radius); // Outer circle
+    circle(x, y, radius - 10); // Inner circle border
+    
+    setfillstyle(SOLID_FILL, BLUE);
+    fillellipse(x - radius / 2, y - radius / 2, radius / 2, radius / 2); // Top-left blue
+    fillellipse(x + radius / 2, y + radius / 2, radius / 2, radius / 2); // Bottom-right blue
+    
+    setfillstyle(SOLID_FILL, WHITE);
+    fillellipse(x + radius / 2, y - radius / 2, radius / 2, radius / 2); // Top-right white
+    fillellipse(x - radius / 2, y + radius / 2, radius / 2, radius / 2); // Bottom-left white
+    
+    setcolor(WHITE);
+    settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 2);
+    outtextxy(x - 30, y - radius - 20, "BMW"); // Draw BMW text on top
+}
+
+int main() {
+    int gd = DETECT, gm;
+    initgraph(&gd, &gm, "");
+    
+    int x = getmaxx() / 2;
+    int y = getmaxy() / 2;
+    int radius = 100;
+    
+    drawBMWLogo(x, y, radius);
+    
+    getch();
+    closegraph();
+    return 0;
+}
 // The winbgim library, Version 6.0, August 9, 2004
 // Written by:
 //      Grant Macklem (Grant.Macklem@colorado.edu)
